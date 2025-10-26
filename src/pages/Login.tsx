@@ -15,7 +15,7 @@ export default function Login() {
                 </div>
                 <div className=" h-full w-[45%] flex flex-col items-center justify-center p-10 bg-[#99582a] rounded-l-[50px]">
                     <div className=" text-white flex flex-col items-center justify-center">
-                        <span className=" text-[40px] font-extrabold mb-5">
+                        <span className=" text-[45px] font-extrabold mb-5">
                             LOG IN
                         </span>
                         <div className=" w-full flex flex-col items-center justify-center space-y-5 mb-10">
@@ -23,7 +23,7 @@ export default function Login() {
                             <InputParameter parameter="Phone Number" type="text"/>
                         </div>
                         <div className=" w-full flex flex-col items-center justify-center gap-4">
-                            <span className=" text-[18px] font-semibold">Don't have an account ? <span onClick={()=>navigate("/signup")} className=" hover:text-[#bb9457] hover:underline transition-text duration-200">SignUp</span></span>
+                            <span className=" text-[22px] font-semibold">Don't have an account ? <span onClick={()=>navigate("/signup")} className=" hover:text-[#bb9457] hover:underline transition-text duration-200">SignUp</span></span>
                             <Button onClick={()=>navigate("/landing")} buttonText="Login"/>
                         </div>
                     </div>

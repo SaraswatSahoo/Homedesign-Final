@@ -60,7 +60,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
           {/* Main Showcase Section */}
           <div className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center">
             {/* Carousel Wrapper */}
-            <div className="relative w-full h-full flex items-center justify-center [perspective:1000px]">
+            <div className="relative w-full h-full flex items-center justify-center perspective-[1000px]">
               {images.map((image, index) => {
                 const offset = index - currentIndex;
                 const total = images.length;

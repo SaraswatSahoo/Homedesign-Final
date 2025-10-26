@@ -32,7 +32,7 @@ export default function Carousel() {
       );
 
     return (
-        <div className=" w-full h-full">
+        <div className=" w-full">
             <HeroSection 
                 images={images}
                 title={title}
