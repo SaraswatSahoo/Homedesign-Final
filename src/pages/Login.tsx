@@ -1,8 +1,12 @@
 import Button from "@/components/signup/Button";
 import Carousel from "@/components/signup/Carousel";
 import InputParameter from "@/components/signup/InputParameter";
+import { useNavigate } from "react-router";
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
     return(
         <div className=" w-screen h-screen flex items-center justify-center bg-[#ffe6a7]">
             <div className=" w-[80%] h-[85%] bg-white rounded-[20px] shadow-lg flex overflow-hidden">
@@ -18,8 +22,9 @@ export default function Login() {
                             <InputParameter parameter="Email" type="email"/>
                             <InputParameter parameter="Phone Number" type="text"/>
                         </div>
-                        <div className=" w-full flex items-center justify-center">
-                            <Button />
+                        <div className=" w-full flex flex-col items-center justify-center gap-4">
+                            <span className=" text-[18px] font-semibold">Don't have an account ? <span onClick={()=>navigate("/signup")} className=" hover:text-[#bb9457] hover:underline transition-text duration-200">SignUp</span></span>
+                            <Button onClick={()=>navigate("/landing")} buttonText="Login"/>
                         </div>
                     </div>
                 </div>
