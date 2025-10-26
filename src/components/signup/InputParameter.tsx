@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Input } from "../ui/input";
+import { Input } from "../ui/inputSignUp";
 
 export default function InputParameter({parameter, type}: {parameter: string; type: string}) {
 
