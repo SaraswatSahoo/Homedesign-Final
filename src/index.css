@@ -42,6 +42,18 @@
 }
 
 :root {
+  /* DicedHeroSection Variables */
+  --diced-hero-section-top-text: #333333;
+  --diced-hero-section-main-gradient-from: #000000;
+  --diced-hero-section-main-gradient-to: #333333;
+  --diced-hero-section-main-gradient-foreground: #000000;
+  --diced-hero-section-separator: #1A1A1A;
+  --diced-hero-section-sub-text: #6B4423;
+  --diced-hero-section-button-bg: #8B4513;
+  --diced-hero-section-button-fg: #FFE6A7;
+  --diced-hero-section-button-hover-bg: #D2691E;
+  --diced-hero-section-button-hover-fg: #FFE6A7;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -77,6 +89,18 @@
 }
 
 .dark {
+  /* DicedHeroSection Dark Mode Variables */
+  --diced-hero-section-top-text: #f7f7ff;
+  --diced-hero-section-main-gradient-from: #9F4EFF;
+  --diced-hero-section-main-gradient-to: #00A6FB;
+  --diced-hero-section-main-gradient-foreground: #9F4EFF;
+  --diced-hero-section-separator: #086CA2;
+  --diced-hero-section-sub-text: #f7f7ff;
+  --diced-hero-section-button-bg: #00A6FB;
+  --diced-hero-section-button-fg: #0A0A0A;
+  --diced-hero-section-button-hover-bg: #9F4EFF;
+  --diced-hero-section-button-hover-fg: #FFFFFF;
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
