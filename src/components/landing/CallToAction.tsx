@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { ButtonColorful } from '../ui/button-colorful';
 import { motion } from 'framer-motion';
 

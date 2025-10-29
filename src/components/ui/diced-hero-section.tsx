@@ -285,7 +285,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
           ))}
         </div>
       </div>
-      <style jsx>{`
+      <style>{`
         .warped-image {
           --r: 20px;
           --s: 40px;

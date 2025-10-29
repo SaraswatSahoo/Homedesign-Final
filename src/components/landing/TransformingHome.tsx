@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { DicedHeroSection } from '../ui/diced-hero-section';
 
 export default function TransformingHome() {
