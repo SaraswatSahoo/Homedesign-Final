@@ -41,24 +41,24 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 z-0 opacity-20" aria-hidden="true">
-            <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(128,90,213,0.3),rgba(255,255,255,0))]"></div>
-            <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(0,123,255,0.3),rgba(255,255,255,0))]"></div>
+            <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(128,90,213,0.3),rgba(255,255,255,0))]"></div>
+            <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(0,123,255,0.3),rgba(255,255,255,0))]"></div>
         </div>
 
         {/* Content */}
-        <div className="z-10 flex w-full flex-col items-center text-center space-y-8 md:space-y-12">
+        <div className="z-10 flex w-full flex-col items-center text-center space-y-6 sm:space-y-8 md:space-y-12">
           {/* Header Section */}
-          <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter max-w-4xl">
+          <div className="space-y-3 sm:space-y-4 px-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tighter max-w-4xl">
               {title}
             </h1>
-            <p className="max-w-2xl mx-auto text-muted-foreground md:text-xl">
+            <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground px-4">
               {subtitle}
             </p>
           </div>
 
           {/* Main Showcase Section */}
-          <div className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center">
+          <div className="relative w-full h-[280px] sm:h-[320px] md:h-[400px] lg:h-[450px] flex items-center justify-center">
             {/* Carousel Wrapper */}
             <div className="relative w-full h-full flex items-center justify-center perspective-[1000px]">
               {images.map((image, index) => {
@@ -76,12 +76,13 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                   <div
                     key={index}
                     className={cn(
-                      'absolute w-48 h-96 md:w-64 md:h-[450px] transition-all duration-500 ease-in-out',
-                      'flex items-center justify-center'
+                      'absolute transition-all duration-500 ease-in-out',
+                      'flex items-center justify-center',
+                      'w-32 h-64 xs:w-40 xs:h-80 sm:w-48 sm:h-96 md:w-56 md:h-[400px] lg:w-64 lg:h-[450px]'
                     )}
                     style={{
                       transform: `
-                        translateX(${(pos) * 45}%) 
+                        translateX(${(pos) * 35}%) 
                         scale(${isCenter ? 1 : isAdjacent ? 0.85 : 0.7})
                         rotateY(${(pos) * -10}deg)
                       `,
@@ -94,7 +95,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="object-cover w-full h-full rounded-3xl border-2 border-foreground/10 shadow-2xl"
+                      className="object-cover w-full h-full rounded-2xl sm:rounded-3xl border-2 border-foreground/10 shadow-2xl"
                     />
                   </div>
                 );
@@ -105,18 +106,18 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
             <ArrowButton
               variant="outline"
               size="icon"
-              className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm"
+              className="absolute left-1 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 rounded-full h-8 w-8 sm:h-10 sm:w-10 z-20 bg-background/50 backdrop-blur-sm"
               onClick={handlePrev}
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             </ArrowButton>
             <ArrowButton
               variant="outline"
               size="icon"
-              className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm"
+              className="absolute right-1 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 rounded-full h-8 w-8 sm:h-10 sm:w-10 z-20 bg-background/50 backdrop-blur-sm"
               onClick={handleNext}
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </ArrowButton>
           </div>
         </div>

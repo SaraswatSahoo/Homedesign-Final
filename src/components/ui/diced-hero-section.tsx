@@ -66,6 +66,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
   isRTL = false,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isRTLCheck = (text: string): boolean => {
@@ -75,7 +76,9 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
   useEffect(() => {
     const checkMobile = () => {
       if (containerRef.current) {
-        setIsMobile(containerRef.current.offsetWidth < mobileBreakpoint);
+        const width = containerRef.current.offsetWidth;
+        setIsMobile(width < 768);
+        setIsTablet(width >= 768 && width < mobileBreakpoint);
       }
     };
     checkMobile();
@@ -94,16 +97,28 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
     return {};
   };
 
+  const getResponsivePadding = () => {
+    if (isMobile) return '1rem';
+    if (isTablet) return '1.5rem';
+    return '2rem';
+  };
+
+  const getResponsiveMargin = () => {
+    if (isMobile) return 0;
+    if (isTablet) return '1.5rem';
+    return '2rem';
+  };
+
   return (
     <main
       ref={containerRef}
       style={{
         borderRadius: componentBorderRadius,
         backgroundColor,
-        padding: '2rem',
+        padding: getResponsivePadding(),
         overflow: 'hidden',
         display: 'flex',
-        flexDirection: isMobile ? 'column' : isRTL ? 'row-reverse' : 'row',
+        flexDirection: isMobile || isTablet ? 'column' : isRTL ? 'row-reverse' : 'row',
         justifyContent: 'center',
         alignItems: 'stretch',
         width: '100%',
@@ -118,19 +133,19 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
       <div
         style={{
           flex: 1,
-          marginRight: isMobile ? 0 : isRTL ? 0 : '2rem',
-          marginLeft: isMobile ? 0 : isRTL ? '2rem' : 0,
-          textAlign: isMobile ? 'center' : isRTL ? 'right' : 'left',
-          alignItems: isMobile ? 'center' : isRTL ? 'flex-end' : 'flex-start',
-          maxWidth: isMobile ? '100%' : '50%',
+          marginRight: isMobile || isTablet ? 0 : isRTL ? 0 : getResponsiveMargin(),
+          marginLeft: isMobile || isTablet ? 0 : isRTL ? getResponsiveMargin() : 0,
+          textAlign: isMobile || isTablet ? 'center' : isRTL ? 'right' : 'left',
+          alignItems: isMobile || isTablet ? 'center' : isRTL ? 'flex-end' : 'flex-start',
+          maxWidth: isMobile || isTablet ? '100%' : '50%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           zIndex: 1,
-          paddingBottom: isMobile ? '2rem' : 0,
+          paddingBottom: isMobile || isTablet ? '2rem' : 0,
         }}
       >
-        <div>
+        <div style={{ width: '100%' }}>
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,6 +155,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
               ...getGradientStyle(topTextStyle?.gradient),
               direction: isRTLCheck(topText) ? 'rtl' : 'ltr',
               textAlign: isRTLCheck(topText) ? 'right' : 'left',
+              fontSize: isMobile ? 'clamp(0.875rem, 3vw, 1rem)' : topTextStyle?.fontSize,
             }}
           >
             {topText}
@@ -151,12 +167,17 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
             style={{
               ...mainTextStyle,
               direction: isRTLCheck(mainText) ? 'rtl' : 'ltr',
-              textAlign: isMobile
+              textAlign: isMobile || isTablet
                 ? 'center'
                 : isRTLCheck(mainText)
                 ? 'right'
                 : 'left',
-              fontSize: mainTextStyle?.fontSize,
+              fontSize: isMobile 
+                ? 'clamp(1.5rem, 8vw, 2.5rem)' 
+                : isTablet
+                ? 'clamp(2rem, 5vw, 3rem)'
+                : mainTextStyle?.fontSize,
+              marginTop: isMobile ? '0.5rem' : '1rem',
             }}
           >
             <motion.span
@@ -170,18 +191,18 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
           </motion.h1>
           <motion.hr
             initial={{ width: 0 }}
-            animate={{ width: '6.25rem' }}
+            animate={{ width: isMobile ? '4rem' : '6.25rem' }}
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
               height: '0.25rem',
               background: separatorColor,
               border: 'none',
-              margin: isMobile
-                ? '1.125rem auto 1.875rem'
+              margin: isMobile || isTablet
+                ? '1rem auto 1.5rem'
                 : isRTLCheck(mainText)
                 ? '1.125rem 0 1.875rem auto'
                 : '1.125rem 0 1.875rem',
-              alignSelf: isMobile
+              alignSelf: isMobile || isTablet
                 ? 'center'
                 : isRTLCheck(mainText)
                 ? 'flex-end'
@@ -197,6 +218,12 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
               ...getGradientStyle(subMainTextStyle?.gradient),
               direction: isRTLCheck(subMainText) ? 'rtl' : 'ltr',
               textAlign: isRTLCheck(subMainText) ? 'right' : 'left',
+              fontSize: isMobile 
+                ? 'clamp(0.875rem, 4vw, 1rem)' 
+                : isTablet
+                ? 'clamp(1rem, 2.5vw, 1.125rem)'
+                : subMainTextStyle?.fontSize,
+              lineHeight: isMobile ? '1.5' : '1.6',
             }}
           >
             {subMainText}
@@ -207,13 +234,14 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           style={{
-            marginTop: '1rem',
+            marginTop: isMobile ? '1.5rem' : '1rem',
             display: 'flex',
-            justifyContent: isMobile
+            justifyContent: isMobile || isTablet
               ? 'center'
               : isRTL
               ? 'flex-end'
               : 'flex-start',
+            width: '100%',
           }}
         >
           <ChronicleButton
@@ -235,9 +263,9 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
           flexDirection: 'column',
           alignItems: isRTL ? 'flex-start' : 'flex-end',
           position: 'relative',
-          width: isMobile ? '100%' : '50%',
-          paddingLeft: isMobile ? 0 : isRTL ? 0 : '2rem',
-          paddingRight: isMobile ? 0 : isRTL ? '2rem' : 0,
+          width: isMobile || isTablet ? '100%' : '50%',
+          paddingLeft: isMobile || isTablet ? 0 : isRTL ? 0 : getResponsiveMargin(),
+          paddingRight: isMobile || isTablet ? 0 : isRTL ? getResponsiveMargin() : 0,
           height: 'auto',
         }}
       >
@@ -245,9 +273,11 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '20px',
+            gap: isMobile ? '10px' : isTablet ? '15px' : '20px',
             width: '100%',
             aspectRatio: '1 / 1',
+            maxWidth: isMobile ? '100%' : isTablet ? '500px' : '100%',
+            margin: isMobile || isTablet ? '0 auto' : '0',
           }}
         >
           {[slides[3], slides[2], slides[1], slides[0]].map((slide, index) => (
@@ -258,7 +288,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
                 width: '100%',
                 paddingBottom: '100%',
                 overflow: 'hidden',
-                borderRadius: '20px',
+                borderRadius: isMobile ? '12px' : isTablet ? '16px' : '20px',
               }}
             >
               <img
@@ -287,10 +317,10 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
       </div>
       <style>{`
         .warped-image {
-          --r: 20px;
-          --s: 40px;
-          --x: 25px;
-          --y: 5px;
+          --r: ${isMobile ? '12px' : isTablet ? '16px' : '20px'};
+          --s: ${isMobile ? '24px' : isTablet ? '32px' : '40px'};
+          --x: ${isMobile ? '15px' : isTablet ? '20px' : '25px'};
+          --y: ${isMobile ? '3px' : isTablet ? '4px' : '5px'};
         }
         .top-right {
           --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);

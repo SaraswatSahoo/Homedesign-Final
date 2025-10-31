@@ -29,7 +29,7 @@ export default function HeroSection() {
             <HeroCollage
                 title={
                 <>
-                    Beyond Blueprints. <span className=" text-[#99582a] ">Inside Your Future.</span>
+                    Beyond Blueprints. <span className="text-[#99582a]">Inside Your Future.</span>
                 </>
                 }
                 subtitle="Don't just imagine it. Walk through your perfectly designed home in stunning 3D and virtual reality."

@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
       ];
 
     return (
-        <div className="items-center justify-center">
+        <div className="w-full items-center justify-center">
             <AnimatedCarousel 
                 title="Why Choose Us ?"
                 logos={partnerLogos.map(logo => logo.src)}
@@ -26,11 +26,13 @@ export default function WhyChooseUs() {
                 autoPlayInterval={2000}
                 itemsPerViewMobile={3}
                 itemsPerViewDesktop={5}
-                logoContainerWidth="w-30"
-                logoContainerHeight="h-20"
+                spacing="gap-4 sm:gap-6 md:gap-8"
+                padding="py-10 sm:py-14 md:py-16 lg:py-10 px-4 sm:px-6"
+                logoContainerWidth="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-36"
+                logoContainerHeight="h-12 xs:h-14 sm:h-16 md:h-18"
                 logoImageWidth="w-auto"
-                logoImageHeight="h-10"
-                containerClassName=" bg-transparent"
+                logoImageHeight="h-6 xs:h-7 sm:h-8 md:h-9"
+                containerClassName="bg-transparent"
             />
         </div>
     )
