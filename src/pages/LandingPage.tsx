@@ -12,8 +12,6 @@ export default function LandingPage() {
         <div className=" w-screen flex flex-col justify-center items-center bg-[#ffe6a7] gap-4 p-4">
             
             <Navbar />
-
-
             <HeroSection />
             <WhyChooseUs />
             <DreamHouse />
@@ -22,6 +20,7 @@ export default function LandingPage() {
             <TransformingHome />
             <CallToAction />
             <FAQ />
+            
         </div>
     )
 }
