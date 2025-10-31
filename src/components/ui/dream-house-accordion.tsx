@@ -42,10 +42,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
   return (
     <div
       className={`
-        relative rounded-2xl overflow-hidden cursor-pointer
-        transition-all duration-700 ease-in-out shadow-xl shrink-0
-        h-[220px] sm:h-[260px] md:h-[500px]
-  ${isActive ? 'w-64 sm:w-80 md:w-[500px]' : 'w-16 sm:w-20 md:w-20'}
+        relative h-[500px] rounded-2xl overflow-hidden cursor-pointer
+        transition-all duration-700 ease-in-out shadow-xl
+  ${isActive ? 'w-[500px]' : 'w-20'}
       `}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -73,14 +72,12 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
       {/* Caption Text */}
       <span
         className={`
-          absolute text-white text-base sm:text-lg font-semibold whitespace-nowrap z-20
+          absolute text-white text-lg font-semibold whitespace-nowrap z-20
           transition-all duration-300 ease-in-out
-          bottom-4 left-4
-          md:left-1/2 md:-translate-x-1/2
           ${
             isActive
-              ? 'md:bottom-6 md:rotate-0'
-              : 'w-auto text-left md:bottom-24 md:rotate-90'
+              ? 'bottom-6 left-1/2 -translate-x-1/2 rotate-0'
+              : 'w-auto text-left bottom-24 left-1/2 -translate-x-1/2 rotate-90'
           }
         `}
       >
@@ -122,7 +119,7 @@ export function DreamHouseShowcase() {
             <p className="mt-6 text-lg text-gray-600 max-w-xl mx-auto md:mx-0">
               Experience exceptional homes where modern design meets timeless elegance. Each space is thoughtfully crafted to elevate your lifestyle.
             </p>
-            <div className="mt-8 flex gap-4 justify-center md:justify-start">
+            <div className="mt-8 flex gap-4">
               <a
                 href="#contact"
                 className="inline-block bg-gray-900 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors duration-300"
@@ -136,7 +133,7 @@ export function DreamHouseShowcase() {
 
           {/* Right Side: Image Accordion */}
           <div className="w-full md:w-1/2">
-            <div className="flex flex-row items-center justify-start gap-2 md:gap-4 overflow-x-auto p-2 md:p-4 snap-x snap-mandatory">
+            <div className="flex flex-row items-center justify-center gap-4 overflow-x-auto p-4">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={item.id}

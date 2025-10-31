@@ -100,7 +100,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
       style={{
         borderRadius: componentBorderRadius,
         backgroundColor,
-        padding: isMobile ? '1rem' : '2rem',
+        padding: '2rem',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: isMobile ? 'column' : isRTL ? 'row-reverse' : 'row',
@@ -140,7 +140,6 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
               ...getGradientStyle(topTextStyle?.gradient),
               direction: isRTLCheck(topText) ? 'rtl' : 'ltr',
               textAlign: isRTLCheck(topText) ? 'right' : 'left',
-              fontSize: topTextStyle?.fontSize ?? (isMobile ? 'clamp(0.9rem, 3.5vw, 1rem)' : undefined),
             }}
           >
             {topText}
@@ -157,7 +156,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
                 : isRTLCheck(mainText)
                 ? 'right'
                 : 'left',
-              fontSize: mainTextStyle?.fontSize ?? (isMobile ? 'clamp(1.75rem, 6vw, 2.25rem)' : undefined),
+              fontSize: mainTextStyle?.fontSize,
             }}
           >
             <motion.span
@@ -197,9 +196,7 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
               ...subMainTextStyle,
               ...getGradientStyle(subMainTextStyle?.gradient),
               direction: isRTLCheck(subMainText) ? 'rtl' : 'ltr',
-              textAlign: isMobile ? 'center' : isRTLCheck(subMainText) ? 'right' : 'left',
-              fontSize: subMainTextStyle?.fontSize ?? (isMobile ? 'clamp(0.95rem, 3.8vw, 1.05rem)' : undefined),
-              lineHeight: isMobile ? '1.5' : subMainTextStyle?.fontSize ? undefined : '1.6',
+              textAlign: isRTLCheck(subMainText) ? 'right' : 'left',
             }}
           >
             {subMainText}
@@ -247,10 +244,10 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(2, 1fr)',
-            gap: isMobile ? '12px' : '20px',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '20px',
             width: '100%',
-            aspectRatio: isMobile ? 'auto' : '1 / 1',
+            aspectRatio: '1 / 1',
           }}
         >
           {[slides[3], slides[2], slides[1], slides[0]].map((slide, index) => (
@@ -259,9 +256,9 @@ export const DicedHeroSection: React.FC<DicedHeroSectionProps> = ({
               style={{
                 position: 'relative',
                 width: '100%',
-                paddingBottom: isMobile ? '66%' : '100%',
+                paddingBottom: '100%',
                 overflow: 'hidden',
-                borderRadius: isMobile ? '14px' : '20px',
+                borderRadius: '20px',
               }}
             >
               <img
