@@ -6,7 +6,7 @@ export default function Navbar() {
             <span className=" text-[30px] font-bold">HOME<span className=" text-[#99582a]">DESIGN</span></span>
             <div className=" flex items-center justify-center gap-2 text-[22px] font-semibold ">
                 <User />
-                <span>Saraswat Sahoo</span>
+                <span>Mankrish Global</span>
             </div>
         </div>
     )
