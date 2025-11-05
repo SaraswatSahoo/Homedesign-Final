@@ -1,7 +1,11 @@
 "use client";
+import { useNavigate } from 'react-router';
 import { DicedHeroSection } from '../ui/diced-hero-section';
 
 export default function TransformingHome() {
+
+  const navigate = useNavigate();
+
   return (
     <DicedHeroSection
       topText="✨ Dream · Design · Transform"
@@ -26,7 +30,7 @@ export default function TransformingHome() {
           image: "/transformingHomes/furniture.jpg",
         },
       ]}
-      onMainButtonClick={() => console.log("Main button clicked")}
+      onMainButtonClick={() => navigate("/bookasession")}
       onGridImageHover={index => console.log(`Grid image ${index} hovered`)}
       onGridImageClick={index => console.log(`Grid image ${index} clicked`)}
       topTextStyle={{ 

@@ -1,8 +1,12 @@
 "use client";
+import { useNavigate } from 'react-router';
 import { ButtonColorful } from '../ui/button-colorful';
 import { motion } from 'framer-motion';
 
 export default function CallToAction() {
+
+    const navigate = useNavigate();
+
     return (
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -37,6 +41,7 @@ export default function CallToAction() {
                     label="view in VR" 
                     size="xl"
                     className="shadow-lg shadow-[#99582a]/20 hover:shadow-xl hover:shadow-[#99582a]/30 transition-shadow"
+                    onClick={() => navigate("/viewonvr")}
                 />
             </motion.div>
         </motion.div>
